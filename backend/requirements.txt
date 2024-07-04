@@ -1,0 +1,6 @@
+flask
+json
+SpeechRecognition
+pyttsx3
+time
+selenium
