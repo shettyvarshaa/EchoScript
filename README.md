@@ -107,3 +107,7 @@ python main.py
 3.4 Press `F5` to open a new window with your extension loaded.
 
 3.5 Run your command from the command palette by pressing (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and typing `EchoScript`.
+
+3.6 Say `start coding` to start voice commands.
+
+3.7 Try out this query `find a java code for simple calculator from stack overflow `. (working on the logic to render it for generalized queries)
