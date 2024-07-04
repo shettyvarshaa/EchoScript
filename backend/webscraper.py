@@ -43,7 +43,7 @@ def fetch_stackoverflow_code(query):
         time.sleep(10)  # Adjust the sleep time if needed
 
         # Extract the code from the page
-        code_elements = driver.find_elements(By.CSS_SELECTOR, 'pre.lang-py.s-code-block > code')
+        code_elements = driver.find_elements(By.CSS_SELECTOR, 'pre.lang-java.s-code-block > code')
         codes = [code.text for code in code_elements]
         return codes[0] if codes else None
 

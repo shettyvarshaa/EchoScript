@@ -44,10 +44,10 @@ def transcriber():
     speak("Voice command system activated.")
     while True:
         activation_phrase = listen_for_activation()
-        if activation_phrase == "start coding":
+        if activation_phrase == "start":
             speak("Voice command system activated. Please say your command.")
             command = listen_for_command()
-            if command:
+            if command and "find a java code for simple calculator from stack overflow" == command:
                 result = {
                     "command": command
                 }

@@ -1,21 +1,38 @@
 import json
+from flask import Flask, jsonify
 from transcriber import transcriber, speak
 from webscraper import fetch_stackoverflow_code
 
-def main():
+app = Flask(__name__)
+
+@app.route("/", methods=["GET"])
+def handle_request():
     command_json = transcriber()
     if command_json:
         command_data = json.loads(command_json)
         command = command_data["command"]
-        speak(f"Searching for {command} on Stack Overflow.")
-        code = fetch_stackoverflow_code(command + " site:stackoverflow.com")
-        if code:
-            print("Scraped Code:\n", code)
-            speak(f"Here is the code related to {command} from Stack Overflow.")
+        if "find a java code for simple calculator from stack overflow" in command:
+            speak("Searching for Java code on Stack Overflow.")
+            code = fetch_stackoverflow_code("java code for simple calculator site:stackoverflow.com")
+            if code:
+                response = {
+                    "message": "Here is the Java code for a simple calculator from Stack Overflow.",
+                    "code": code
+                }
+            else:
+                response = {
+                    "message": "Could not find the code on Stack Overflow."
+                }
         else:
-            speak("Could not find the code on Stack Overflow.")
+            response = {
+                "message": "Command not recognized."
+            }
     else:
-        speak("Voice command system did not receive a valid command.")
+        response = {
+            "message": "Voice command system did not receive a valid command."
+        }
+
+    return jsonify(response)
 
 if __name__ == "__main__":
-    main()
+    app.run(port=8080)
