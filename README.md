@@ -90,10 +90,10 @@ pip3 install -r requirements.txt
 ```
 
 ### 3. To run the application:
-3.1 To run the server-side, navigate to `server` directory
+3.1 To run the server-side, navigate to `backend` directory
 
 ```bash
-cd server
+cd backend
 ```
 
 3.2 Start the local server
